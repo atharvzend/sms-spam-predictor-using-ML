@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        textarea {
+            width: 60%;
+            height: 100px;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Spam Message Classifier</h2>
+    <textarea id="message" placeholder="Enter your message here..."></textarea><br>
+    <button onclick="predictSpam()">Check Spam</button>
+    <p id="result"></p>
+
+    <script>
+        function predictSpam() {
+            let message = document.getElementById("message").value;
+            if (!message) {
+                alert("Please enter a message!");
+                return;
+            }
+
+            fetch("/predict", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerText = "Result: " + data.result;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Something went wrong!");
+            });
+        }
+    </script>
+</body>
+</html>
