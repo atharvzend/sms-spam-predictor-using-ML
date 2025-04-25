@@ -1,4 +1,4 @@
-📩 SMS Spam Predictor 🔍
+📩 Spam SMS Detection 🔍
 
 🚀 Overview SMS Spam Predictor is a machine learning-based classifier that predicts whether a given message is Spam or Not Spam using Natural Language Processing (NLP) techniques. It is built with Flask for the web interface and trained using TF-IDF Vectorization and Naïve Bayes.
 
@@ -6,7 +6,7 @@
 
 📂 Project Structure
 
-📁 SMS-Spam-Predictor
+📁 Spam SMS Detection
 │── 📄 app.ipynb # Jupyter Notebook with Flask App
 │── 📄 model_training.ipynb # Notebook for Training & Saving Model
 │── 📄 vectorizer.pkl # Saved TF-IDF Vectorizer
